@@ -1,4 +1,4 @@
-from .custom_types import KeyType
+from .custom_types import KeyType, ValueType
 
 class DotDict(dict):
     def __init__(self, *args, **kwargs)->None:
@@ -7,7 +7,7 @@ class DotDict(dict):
             if isinstance(value, dict):
                 self[key] = DotDict(value)
 
-    def __getitem__(self, key: KeyType):
+    def __getitem__(self, key: KeyType)->ValueType:
         if key not in self:
             self[key] = DotDict()
         return super(DotDict, self).__getitem__(key)

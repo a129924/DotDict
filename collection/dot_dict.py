@@ -12,7 +12,7 @@ class DotDict(dict):
             self[key] = DotDict()
         return super(DotDict, self).__getitem__(key)
 
-    def __setitem__(self, key: KeyType, value)->None:
+    def __setitem__(self, key: KeyType, value: ValueType)->None:
         if isinstance(value, dict):
             value = DotDict(value)
         super(DotDict, self).__setitem__(key, value)
